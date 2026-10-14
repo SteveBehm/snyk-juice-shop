@@ -35,9 +35,15 @@ jobs:
         # don't forget to add your snyk token!
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-    # Which Snyk command to run, defaults to test
+          command: monitor
+          args: --all-projects
+          
+      - name: Snyk test
+        uses: snyk/actions@0.3.0
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
           command: test
-    # Additional arguments to pass to Snyk
           args: --all-projects
     # Output a snyk.json file with results if running the test command
           json: snyk_results.json
