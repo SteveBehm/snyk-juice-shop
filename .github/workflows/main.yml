@@ -29,6 +29,14 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
+      # Install dependencies so Snyk can resolve them
+      - name: Install root dependencies
+        run: npm install --ignore-scripts
+
+      - name: Install frontend dependencies
+        run: npm install --ignore-scripts --legacy-peer-dependencies
+        working-directory: frontend
+
       - name: Snyk
         uses: snyk/actions@0.3.0
         env:
