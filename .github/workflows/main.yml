@@ -34,7 +34,7 @@ jobs:
         run: npm install --ignore-scripts
 
       - name: Install frontend dependencies
-        run: npm install --ignore-scripts --legacy-peer-dependencies
+        run: npm install --ignore-scripts --legacy-peer-deps
         working-directory: frontend
 
       - name: Snyk
