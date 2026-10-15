@@ -55,3 +55,14 @@ jobs:
           args: --all-projects
     # Output a snyk.json file with results if running the test command
           json: snyk_results.json
+
+# Running a Snyk Code test
+  code-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Snyk Code test
+        run: npx snyk@latest code test --report --project-name="snyk-juice-shop-cli" --target-name="snyk-juice-shop" --target-reference="main"
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
